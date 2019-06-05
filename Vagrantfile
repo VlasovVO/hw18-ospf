@@ -64,6 +64,7 @@ Vagrant.configure(2) do |config|
       when "server01"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
           cp -f /vagrant/configs/server01/* /etc/quagga/
+          chown quagga:quaggavt /etc/quagga/*.conf
           systemctl enable zebra.service 
           systemctl start zebra.service
           systemctl enable ospfd.service
@@ -72,6 +73,7 @@ Vagrant.configure(2) do |config|
       when "server02"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
           cp -f /vagrant/configs/server02/* /etc/quagga/
+          chown quagga:quaggavt /etc/quagga/*.conf
           systemctl enable zebra.service 
           systemctl start zebra.service
           systemctl enable ospfd.service
@@ -80,6 +82,7 @@ Vagrant.configure(2) do |config|
       when "server03"
         box.vm.provision "shell", run: "always", inline: <<-SHELL
           cp -f /vagrant/configs/server03/* /etc/quagga/
+          chown quagga:quaggavt /etc/quagga/*.conf
           systemctl enable zebra.service 
           systemctl start zebra.service
           systemctl enable ospfd.service
